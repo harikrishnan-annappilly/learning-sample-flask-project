@@ -1,0 +1,38 @@
+{% extends 'nav.html' %}
+{% block content %}
+    <h1>
+        Edit Page
+    </h1>
+    {% if form %}
+        <form method="POST" autocomplete="off">
+            <table>
+                {% for input in form %}
+                    <tr>
+                        <td>
+                            {% if 'CSRF' not in input.type and 'Submit' not in input.type %}
+                                {{input.label}}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if input.type == 'SubmitField' %}
+                                {{input(class="m-2 btn btn-primary")}}
+                            {% else %}
+                                {{input(class="m-2")}}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </form>
+    {% else %}
+    <h3>
+        Form not found 404
+    </h3>
+    {% endif %}
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-{{message['color']}} alert-dismissible fade show" role="alert">
+            {{message['msg']}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endblock %}

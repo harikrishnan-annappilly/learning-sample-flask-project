@@ -13,6 +13,11 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
 
 
+class EditForm(FlaskForm):
+    username = StringField('Username')
+    submit = SubmitField('Change')
+
+
 class DeleteForm(FlaskForm):
     username = StringField('Username')
     submit = SubmitField('Delete')

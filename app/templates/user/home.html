@@ -29,7 +29,12 @@
                     {{user.password}}
                 </td>
                 <td>
-                    <button class="btn btn-warning btn-sm">Edit</button>
+                    <form method="POST">
+                        {{edit_form.username(value=user.username, type='hidden')}}
+                        {{edit_form.submit(class='btn btn-sm btn-warning')}}
+                        {{edit_form.hidden_tag()}}
+                    </form>
+                    <!-- <button class="btn btn-warning btn-sm">Edit</button> -->
                 </td>
                 <td>
                     {% if session['username'] == user.username %}
